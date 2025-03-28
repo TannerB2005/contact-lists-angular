@@ -1,1 +1,9 @@
-<p>contact-list works!</p>
+<div>
+  <ul>
+    @for (contact of contacts; track contact.id; let i = $index; let o = $odd; let e = $even;) {
+      <li [ngClass]="{'odd-row': o, 'even-row': e}">
+        ID: {{contact.id}} (index {{i}}) - {{contact.name}} -
+      </li>
+    }
+  </ul>
+</div>
