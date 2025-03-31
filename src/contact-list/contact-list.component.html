@@ -2,8 +2,11 @@
   <ul>
     @for (contact of contacts; track contact.id; let i = $index; let o = $odd; let e = $even;) {
       <li [ngClass]="{'odd-row': o, 'even-row': e}">
-        ID: {{contact.id}} (index {{i}}) - {{contact.name}} -
-      </li>
+        ID: {{contact.id}} (index {{i}}) - {{contact.name}} - {{contact.phone}} - {{contact.email}} - {{contact.notes}}
+        @if (!contact.completed) {
+          <button type="button" class="delete" (click)="deleteContact(contact.id)"
+       >X</button> }
+
     }
   </ul>
 </div>

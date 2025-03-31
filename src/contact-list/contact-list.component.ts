@@ -13,7 +13,11 @@ export class ContactListComponent {
   }
 
   get contacts() {
-    return this.contactService.contacts();
+    return this.contactService.contacts();}
+
+
+  deleteContact(id: number) {
+    this.contactService.deleteContact(id);
+  }
   }
 
-}

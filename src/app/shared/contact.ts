@@ -3,5 +3,6 @@ export interface Contact {
   name: string,
   phone: string | number,
   email: string | number,
-  notes: string
+  notes: string,
+  completed: boolean
 }
