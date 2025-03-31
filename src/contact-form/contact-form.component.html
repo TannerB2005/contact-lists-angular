@@ -1,3 +1,28 @@
 <div>
-  <input placeholder="Enter Contact name" [(ngModel)]="newContactName"><input placeholder="Phone Number" [(ngModel)]="newContactPhone"><input placeholder="Email" [(ngModel)]="newContactEmail"><input placeholder="Notes (optional)" [(ngModel)]="newContactNotes"><button type="button" (click)="addContact()">Add Contact</button>
+  <form #contactForm="ngForm" (ngSubmit)="addContact()" novalidate>
+    <input
+      placeholder="Enter Contact name"
+      [(ngModel)]="newContactName"
+      name="contactName"
+      required>
+    <input
+      placeholder="Phone Number"
+      [(ngModel)]="newContactPhone"
+      name="contactPhone"
+      required>
+    <input
+      placeholder="Email"
+      [(ngModel)]="newContactEmail"
+      name="contactEmail"
+      required>
+    <input
+      placeholder="Notes (optional)"
+      [(ngModel)]="newContactNotes"
+      name="contactNotes">
+    <button
+      type="submit"
+      [disabled]="contactForm.invalid">
+      Add Contact
+    </button>
+  </form>
 </div>
