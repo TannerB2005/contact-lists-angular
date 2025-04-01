@@ -1,0 +1,10 @@
+/* Footer styles to match the monochrome theme */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a; /* Dark gray background */
+  color: #f4f4f4; /* Light text */
+  padding: 10px 0;
+  font-size: 0.9rem;
+}

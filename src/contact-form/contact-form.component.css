@@ -1,0 +1,68 @@
+/* General container styling */
+.container {
+  padding: 20px;
+  background-color: #a3a3a3; /* Light gray background */
+  border-radius: 8px;
+}
+
+/* Card styling */
+.card {
+  border: 1px solid #6b6b6b; /* Subtle border */
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02); /* Slight zoom on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Elevated shadow */
+}
+
+/* Card body styling */
+.card-body {
+  padding: 15px;
+}
+
+/* Contact name styling */
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fafafa; /* Dark gray text */
+  margin-bottom: 10px;
+}
+
+/* Contact details styling */
+.card-text {
+  font-size: 0.9rem;
+  color: #fefefe; /* Subtle text color */
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* Button styling */
+.btn {
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}

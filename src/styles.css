@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Global styles to match the logo's monochrome theme */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212; /* Dark background to match the logo */
+  color: #f4f4f4; /* Light text for contrast */
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff; /* White headings */
+}
+
+a {
+  color: #f4f4f4;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #bbbbbb; /* Slightly lighter gray on hover */
+}
+
+button {
+  font-family: 'Arial', sans-serif;
+}

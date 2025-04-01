@@ -1,12 +1,28 @@
-<div>
-  <ul>
-    @for (contact of contacts; track contact.id; let i = $index; let o = $odd; let e = $even;) {
-      <li [ngClass]="{'odd-row': o, 'even-row': e}">
-        ID: {{contact.id}} (index {{i}}) - {{contact.name}} - {{contact.phone}} - {{contact.email}} - {{contact.notes}}
-        @if (!contact.completed) {
-          <button type="button" class="delete" (click)="deleteContact(contact.id)"
-       >X</button> }
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    }
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Contact List</h2>
+  <div class="row g-4">
+    <div *ngFor="let contact of contacts; let i = index" class="col-md-6 col-lg-4">
+      <div class="card contact-card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title text-light">{{ contact.name }}</h5>
+          <p class="card-text text-muted">
+            <strong>Phone:</strong> {{ contact.phone }}<br>
+            <strong>Email:</strong> {{ contact.email }}
+          </p>
+          <p class="card-text text-muted small">
+            <strong>ID:</strong> {{ contact.id }}<br>
+            <strong>Notes:</strong> {{ contact.notes || 'N/A' }}
+          </p>
+          <button
+            *ngIf="!contact.completed"
+            class="btn btn-outline-light btn-sm"
+            (click)="deleteContact(contact.id)">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

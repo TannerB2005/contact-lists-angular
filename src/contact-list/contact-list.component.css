@@ -1,0 +1,73 @@
+/* General container styling */
+.container {
+  background-color: #464646; /* Dark background */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Card styling */
+.contact-card {
+  background-color: #857f7f; /* Slightly lighter dark gray */
+  border: 1px solid #333; /* Subtle border */
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: scale(1.02); /* Slight zoom on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Elevated shadow */
+}
+
+/* Card body styling */
+.card-body {
+  padding: 15px;
+}
+
+/* Contact name styling */
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #f4f4f4; /* Light text */
+  margin-bottom: 10px;
+}
+
+/* Contact details styling */
+.card-text {
+  font-size: 0.9rem;
+  color: #bbbbbb; /* Subtle gray text */
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* Button styling */
+.btn-outline-light {
+  color: #f4f4f4; /* Light text */
+  border-color: #f4f4f4;
+}
+
+.btn-outline-light:hover {
+  background-color: #333; /* Slightly darker background on hover */
+  color: #ffffff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}

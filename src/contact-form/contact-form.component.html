@@ -1,28 +1,72 @@
-<div>
-  <form #contactForm="ngForm" (ngSubmit)="addContact()" novalidate>
-    <input
-      placeholder="Enter Contact name"
-      [(ngModel)]="newContactName"
-      name="contactName"
-      required>
-    <input
-      placeholder="Phone Number"
-      [(ngModel)]="newContactPhone"
-      name="contactPhone"
-      required>
-    <input
-      placeholder="Email"
-      [(ngModel)]="newContactEmail"
-      name="contactEmail"
-      required>
-    <input
-      placeholder="Notes (optional)"
-      [(ngModel)]="newContactNotes"
-      name="contactNotes">
-    <button
-      type="submit"
-      [disabled]="contactForm.invalid">
-      Add Contact
-    </button>
+<div class="container mt-4">
+  <form #contactForm="ngForm" (ngSubmit)="addContact()" novalidate class="card p-5 shadow-sm">
+    <h3 class="text-center mb-4">Add New Contact</h3>
+    <div class="row g-4">
+      <!-- Contact Name -->
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="contactName" class="form-label">Contact Name*</label>
+          <input
+            id="contactName"
+            class="form-control"
+            placeholder="Enter Contact Name"
+            [(ngModel)]="newContactName"
+            name="contactName"
+            required>
+        </div>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="contactPhone" class="form-label">Phone Number*</label>
+          <input
+            id="contactPhone"
+            class="form-control"
+            placeholder="Enter Phone Number"
+            [(ngModel)]="newContactPhone"
+            name="contactPhone"
+            required>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="contactEmail" class="form-label">Email*</label>
+          <input
+            id="contactEmail"
+            class="form-control"
+            placeholder="Enter Email"
+            [(ngModel)]="newContactEmail"
+            name="contactEmail"
+            required>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="contactNotes" class="form-label">Notes (Optional)</label>
+          <textarea
+            id="contactNotes"
+            class="form-control"
+            placeholder="Enter Notes"
+            [(ngModel)]="newContactNotes"
+            name="contactNotes"
+            rows="3"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="col-12 text-center">
+        <button
+          type="submit"
+          class="btn btn-primary px-5 py-2"
+          [disabled]="contactForm.invalid">
+          Add Contact
+        </button>
+      </div>
+    </div>
   </form>
 </div>
