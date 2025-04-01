@@ -5,6 +5,10 @@
   align-items: center;
   background-color: #1a1a1a; /* Dark gray background */
   color: #f4f4f4; /* Light text */
-  padding: 10px 0;
-  font-size: 0.9rem;
+  padding: 3px 0;
+  font-size: 0.8rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
