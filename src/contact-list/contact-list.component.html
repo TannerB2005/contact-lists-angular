@@ -3,7 +3,8 @@
 <div class="container mt-4">
   <h2 class="text-center mb-4">Contact List</h2>
   <div class="row g-4">
-    <div *ngFor="let contact of contacts; let i = index" class="col-md-6 col-lg-4">
+    @for (contact of contacts; track contact.id) {
+    <div class="col-md-6 col-lg-4">
       <div class="card contact-card shadow-sm h-100">
         <div class="card-body">
           <h5 class="card-title text-light">{{ contact.name }}</h5>
@@ -23,6 +24,6 @@
           </button>
         </div>
       </div>
-    </div> //
+    </div>}
   </div>
 </div>
