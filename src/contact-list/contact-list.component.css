@@ -15,8 +15,8 @@
 }
 
 .contact-card:hover {
-  transform: scale(1.02); /* Slight zoom on hover */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Elevated shadow */
+transform: scale(1.02); /* Slight zoom on hover */
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Elevated shadow */
 }
 
 /* Card body styling */
@@ -72,4 +72,19 @@
     flex: 0 0 33.3333%;
     max-width: 33.3333%;
   }
+}
+/*Modal Styles*/
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  z-index: 1050;
+}
+
+.modal {
+  max-width: 400px;
+  width: 90%;
 }

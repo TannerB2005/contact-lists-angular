@@ -23,6 +23,7 @@ export class ContactListComponent {
   }
 
   selectContact(contact: Contact) {
+    console.log("Opening modal for contact: ", contact);
     this.modalService.openModal(contact);
   }
 

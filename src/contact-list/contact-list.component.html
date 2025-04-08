@@ -3,40 +3,60 @@
 <div class="container mt-4">
   <h2 class="text-center mb-4 text-white">Contact List</h2>
   <div class="row g-4">
-    @for (contact of contacts; track contact.id){
-    <div class="col-md-6 col-lg-4">
-      <div class="card contact-card shadow-sm h-100">
-        <div class="card-body">
 
-          <h5 class="card-title text-light">{{ contact.name }}</h5>
-          <p class="card-text text-muted">
-            <strong>Phone:</strong> {{ contact.phone }}<br>
-            <strong>Email:</strong> {{ contact.email }}
-          </p>
-          <p class="card-text text-muted small">
-            <strong>ID:</strong> {{ contact.id }}<br>
-            <strong>Notes:</strong> {{ contact.notes || 'N/A' }}
-          </p>
-          @for (contact of contacts; track contact){
-            <div class="btn btn-outline-light btn-sm " (click)="selectContact(contact)">Expand Card</div>}
-            @if (showModal$ | async) {
-            <div class="modal-backdrop">
-              <button (click)="closeModal()">Close</button>
-              <ng-container *ngIf="selectedContact$ | async as selectedContact">
-                <h2>{{ selectedContact.name }}</h2>
-                <p>Email: {{ selectedContact.email }}</p>
-                <p>Phone: {{ selectedContact.phone }}</p>
-              </ng-container>
+    @for (contact of contacts; track contact.id) {
+      <div class="col-md-6 col-lg-4">
+        <div class="card contact-card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-light">{{ contact.name }}</h5>
+            <p class="card-text text-muted">
+              <strong>Phone:</strong> {{ contact.phone }}<br>
+              <strong>Email:</strong> {{ contact.email }}
+            </p>
+            <p class="card-text text-muted small">
+              <strong>ID:</strong> {{ contact.id }}<br>
+              <strong>Notes:</strong> {{ contact.notes || 'N/A' }}
+            </p>
+
+            <div class="btn btn-outline-light btn-sm" (click)="selectContact(contact)">
+              Expand Card
             </div>
+
+            @if (!contact.completed) {
+              <button
+                class="btn btn-outline-light btn-sm"
+                (click)="deleteContact(contact.id)">
+                Delete
+              </button>
             }
-          @if (!contact.completed) {
-          <button
-            class="btn btn-outline-light btn-sm"
-            (click)="deleteContact(contact.id)">
-            Delete
-          </button>}
+          </div>
         </div>
       </div>
-    </div>} @empty {<p class="text-center text-light">No contacts, add some!</p>}
+    }
+
+    @empty {
+      <p class="text-center text-light">No contacts, add some!</p>
+    }
+
   </div>
 </div>
+
+<!-- This is the global modal, which was in the incorrect spot so i was using it multiple times, great thing to find out! -->
+@if (showModal$ | async) {
+  @if (selectedContact$ | async) {
+    <div class="modal-backdrop d-flex align-items-center justify-content-center">
+      <div class="modal bg-white p-4 rounded shadow-lg text-dark">
+        <button class="btn btn-outline-light btn-sm" (click)="closeModal()">Close</button>
+
+        <!-- Access the observable again inside for display -->
+        <ng-container *ngIf="selectedContact$ | async as selectedContact">
+          <h2>{{ selectedContact.name }}</h2>
+          <p><strong>Email:</strong> {{ selectedContact.email }}</p>
+          <p><strong>Phone:</strong> {{ selectedContact.phone }}</p>
+          <p><strong>Notes:</strong> {{ selectedContact.notes || 'N/A' }}</p>
+        </ng-container>
+      </div>
+    </div>
+  }
+}
+
