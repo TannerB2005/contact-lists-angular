@@ -7,6 +7,7 @@
     <div class="col-md-6 col-lg-4">
       <div class="card contact-card shadow-sm h-100">
         <div class="card-body">
+
           <h5 class="card-title text-light">{{ contact.name }}</h5>
           <p class="card-text text-muted">
             <strong>Phone:</strong> {{ contact.phone }}<br>
@@ -16,6 +17,18 @@
             <strong>ID:</strong> {{ contact.id }}<br>
             <strong>Notes:</strong> {{ contact.notes || 'N/A' }}
           </p>
+          @for (contact of contacts; track contact){
+            <div class="btn btn-outline-light btn-sm " (click)="selectContact(contact)">Expand Card</div>}
+            @if (showModal$ | async) {
+            <div class="modal-backdrop">
+              <button (click)="closeModal()">Close</button>
+              <ng-container *ngIf="selectedContact$ | async as selectedContact">
+                <h2>{{ selectedContact.name }}</h2>
+                <p>Email: {{ selectedContact.email }}</p>
+                <p>Phone: {{ selectedContact.phone }}</p>
+              </ng-container>
+            </div>
+            }
           @if (!contact.completed) {
           <button
             class="btn btn-outline-light btn-sm"

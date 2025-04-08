@@ -44,6 +44,7 @@
 .btn-outline-light {
   color: #f4f4f4; /* Light text */
   border-color: #f4f4f4;
+  margin-right: 15px;
 }
 
 .btn-outline-light:hover {
