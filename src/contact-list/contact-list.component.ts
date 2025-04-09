@@ -7,17 +7,19 @@ import { ContactModalService } from '../app/shared/contact-modal.service';
 
 @Component({
   selector: 'app-contact-list',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './contact-list.component.html',
-  styleUrl: './contact-list.component.css'
+  styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent {
-
   showModal$: Observable<boolean>;
   selectedContact$: Observable<Contact | null>;
-  constructor(private contactService:ContactService,
+
+  constructor(
+    private contactService:ContactService,
     private modalService: ContactModalService
-  ){
+  ) {
     this.showModal$ = this.modalService.showModal$;
     this.selectedContact$ = this.modalService.selectedContact$;
   }
@@ -38,11 +40,6 @@ export class ContactListComponent {
   deleteContact(id: number) {
     this.contactService.deleteContact(id);
   }
-
-  selectedContact: Contact | null = null;
-
-
-
-  }
+}
 
 

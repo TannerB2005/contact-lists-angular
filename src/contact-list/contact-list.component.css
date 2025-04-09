@@ -86,5 +86,21 @@ transform: scale(1.02); /* Slight zoom on hover */
 
 .modal {
   max-width: 400px;
-  width: 90%;
+  width: 100%;
+}
+
+/* Fade-in modal animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
 }
