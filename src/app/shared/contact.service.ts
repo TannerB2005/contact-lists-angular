@@ -28,5 +28,6 @@ export class ContactService {
     ((currentContacts) => currentContacts.filter((task) =>
     task.id != id)
   );
+  
 }
 }

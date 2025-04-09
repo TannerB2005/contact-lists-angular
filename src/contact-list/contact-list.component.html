@@ -3,27 +3,61 @@
 <div class="container mt-4">
   <h2 class="text-center mb-4 text-white">Contact List</h2>
   <div class="row g-4">
-    @for (contact of contacts; track contact.id){
-    <div class="col-md-6 col-lg-4">
-      <div class="card contact-card shadow-sm h-100">
-        <div class="card-body">
-          <h5 class="card-title text-light">{{ contact.name }}</h5>
-          <p class="card-text text-muted">
-            <strong>Phone:</strong> {{ contact.phone }}<br>
-            <strong>Email:</strong> {{ contact.email }}
-          </p>
-          <p class="card-text text-muted small">
-            <strong>ID:</strong> {{ contact.id }}<br>
-            <strong>Notes:</strong> {{ contact.notes || 'N/A' }}
-          </p>
-          @if (!contact.completed) {
-          <button
-            class="btn btn-outline-light btn-sm"
-            (click)="deleteContact(contact.id)">
-            Delete
-          </button>}
+
+    @for (contact of contacts; track contact.id) {
+      <div class="col-md-6 col-lg-4">
+        <div class="card contact-card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-light">{{ contact.name }}</h5>
+            <p class="card-text text-muted">
+              <strong>Phone:</strong> {{ contact.phone }}<br>
+              <strong>Email:</strong> {{ contact.email }}
+            </p>
+            <p class="card-text text-muted small">
+              <strong>ID:</strong> {{ contact.id }}<br>
+              <strong>Notes:</strong> {{ contact.notes || 'N/A' }}
+            </p>
+
+            <div class="btn btn-outline-light btn-sm" (click)="selectContact(contact)">
+              Expand Card
+            </div>
+
+
+            @if (!contact.completed) {
+              <button
+                class="btn btn-outline-light btn-sm"
+                (click)="deleteContact(contact.id)">
+                Delete
+              </button>
+            }
+          </div>
         </div>
       </div>
-    </div>} @empty {<p class="text-center text-light">No contacts, add some!</p>}
+    }
+
+    @empty {
+      <p class="text-center text-light">No contacts, add some!</p>
+    }
+
   </div>
 </div>
+
+<!-- This is the global modal, which was in the incorrect spot so i was using it multiple times, great thing to find out! -->
+ <!-- the if statement here wasnt working because i was doubling up when it wasnt needed, instead i needed to put some content in first then call back the if for selected contact so there would be content instead of just the backdrop  -->
+@if (showModal$ | async) {
+  <div class="modal-backdrop fade-in d-flex align-items-center justify-content-center position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 z-3">
+    <div class="bg-white p-4 rounded shadow-lg text-dark" style="min-width: 300px; max-width: 500px;">
+      <button class="btn btn-sm btn-danger float-end" (click)="closeModal()">Close</button>
+
+      @if (selectedContact$ | async) {
+        <ng-container *ngIf="selectedContact$ | async as selectedContact">
+          <h4>{{ selectedContact.name }}</h4>
+          <p><strong>Email:</strong> {{ selectedContact.email }}</p>
+          <p><strong>Phone:</strong> {{ selectedContact.phone }}</p>
+          <p><strong>Notes:</strong> {{ selectedContact.notes || 'N/A' }}</p>
+        </ng-container>
+      }
+    </div>
+  </div>
+}
+
