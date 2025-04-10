@@ -36,10 +36,27 @@ export class ContactListComponent {
   get contacts() {
     return this.contactService.contacts();}
 
-
-  deleteContact(id: number) {
-    this.contactService.deleteContact(id);
+  get editingContact() {
+    return this.contactService.editingContact();
   }
+
+
+  deleteContact(email: string) {
+    this.contactService.deleteContact(email);
+  }
+
+  editContact(contact: Contact) {
+    this.contactService.startEditing({ ...contact });
+  }
+
+  cancelEdit() {
+    this.contactService.cancelEditing();
+  }
+
+  saveContact(updatedContact: Contact) {
+    this.contactService.updateContact(updatedContact)
+  }
+
 }
 
 

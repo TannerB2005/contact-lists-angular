@@ -4,7 +4,7 @@
   <h2 class="text-center mb-4 text-white">Contact List</h2>
   <div class="row g-4">
 
-    @for (contact of contacts; track contact.id) {
+    @for (contact of contacts; track contact.email) {
       <div class="col-md-6 col-lg-4">
         <div class="card contact-card shadow-sm h-100">
           <div class="card-body">
@@ -22,11 +22,15 @@
               Expand Card
             </div>
 
+            <div class="btn btn-outline-light btn-sm" (click)="editContact(contact)">
+              Edit Contact
+            </div>
+
 
             @if (!contact.completed) {
               <button
                 class="btn btn-outline-light btn-sm"
-                (click)="deleteContact(contact.id)">
+                (click)="deleteContact(contact.email.toString())">
                 Delete
               </button>
             }
@@ -46,7 +50,7 @@
  <!-- the if statement here wasnt working because i was doubling up when it wasnt needed, instead i needed to put some content in first then call back the if for selected contact so there would be content instead of just the backdrop  -->
 @if (showModal$ | async) {
   <div class="modal-backdrop fade-in d-flex align-items-center justify-content-center position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 z-3">
-    <div class="bg-white p-4 rounded shadow-lg text-dark" style="min-width: 300px; max-width: 500px;">
+    <div class="bg-white p-4 rounded shadow-lg text-dark animate-in" style="min-width: 300px; max-width: 500px;">
       <button class="btn btn-sm btn-danger float-end" (click)="closeModal()">Close</button>
 
       @if (selectedContact$ | async) {
@@ -60,4 +64,6 @@
     </div>
   </div>
 }
+
+
 
