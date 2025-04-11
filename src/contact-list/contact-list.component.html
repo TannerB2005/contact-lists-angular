@@ -50,7 +50,7 @@
  <!-- the if statement here wasnt working because i was doubling up when it wasnt needed, instead i needed to put some content in first then call back the if for selected contact so there would be content instead of just the backdrop  -->
 @if (showModal$ | async) {
   <div class="modal-backdrop fade-in d-flex align-items-center justify-content-center position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 z-3">
-    <div class="bg-white p-4 rounded shadow-lg text-dark animate-in" style="min-width: 300px; max-width: 500px;">
+    <div class="bg-white p-4 rounded shadow-lg text-dark animate-in" style="min-width: 300px; max-width: 900px;">
       <button class="btn btn-sm btn-danger float-end" (click)="closeModal()">Close</button>
 
       @if (selectedContact$ | async) {
@@ -65,5 +65,37 @@
   </div>
 }
 
+@for (contact of contacts; track contact.id) {
+  @if (editingContact && editingContact.id === contact.id) {
+    <div class="modal-backdrop fade-in d-flex align-items-center justify-content-center position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 z-3">
+      <h5 class="text-warning">Editing: {{ editingContact.name }}</h5>
 
+      <input
+        [(ngModel)]="editingContact.name"
+        placeholder="Name"
+        class="form-control mb-2"
+      />
+      <input
+        [(ngModel)]="editingContact.email"
+        placeholder="Email"
+        class="form-control mb-2"
+      />
+      <input
+        [(ngModel)]="editingContact.phone"
+        placeholder="Phone"
+        class="form-control mb-2"
+      />
+      <textarea
+        [(ngModel)]="editingContact.notes"
+        placeholder="Notes"
+        class="form-control mb-2"
+      ></textarea>
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-success btn-sm" (click)="saveContact(editingContact)">Save</button>
+        <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </div>
+  }
+  }
 

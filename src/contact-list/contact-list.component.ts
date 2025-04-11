@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Contact } from '../app/shared/contact';
 import { Observable } from 'rxjs';
 import { ContactModalService } from '../app/shared/contact-modal.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })

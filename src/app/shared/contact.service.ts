@@ -6,12 +6,13 @@ import { Contact } from './contact';
 })
 export class ContactService {
 
-  constructor() {}
 
   contacts = signal<Contact[]>([
     ...this.loadContacts(),
     {id: 1, name: 'Johnston Arbuckle', phone: '000-000-0000', email: 'johnstonar34@gmail.com', notes: '', completed: false}
   ]);
+
+  constructor() {}
 
   // signal to edit
   editingContact: WritableSignal<Contact | null> = signal(null);
@@ -52,7 +53,7 @@ export class ContactService {
 
   // Start editing a contact
   startEditing(contact: Contact) {
-    this.editingContact.set(contact);
+    this.editingContact.set({ ...contact });
   }
 
   // Update contact info
